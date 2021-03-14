@@ -1,6 +1,6 @@
 {
     "id": "FFCM_2nd",
-    "version": 1,
+    "version": 2,
     "name": "Left Extruder",
     "inherits": "ff_creator_max_extrusion_base",
     "metadata": {

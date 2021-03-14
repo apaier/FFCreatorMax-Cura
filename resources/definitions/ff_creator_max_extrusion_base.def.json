@@ -1,6 +1,6 @@
 {
     "id": "ff_creator_max_extruder_base",
-    "version": 1,
+    "version": 2,
     "name": "Base Extruder (do not use)",
     "inherits": "fdmextruder",
     "metadata": {
