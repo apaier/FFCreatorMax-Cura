@@ -18,8 +18,12 @@
 	},
 	"overrides" : {
 		"machine_name" : { "default_value" : "Flashforge Creator Max"},
+		"machine_gcode_flavor" : { "default_value" : "Marlin" },
+		"material_diameter": { "default_value": 1.75 },
+		"machine_extruder_count": { "default_value": 2 },
+		"machine_heated_bed": { "default_value": true },
 		"machine_width" : { "default_value" : 227 },
-		"machine_height" : { "default_value" : 140 },
+		"machine_height" : { "default_value" : 150 },
 		"machine_depth" : { "default_value" : 148 },
 		"machine_center_is_zero" : { "default_value" : true },
 		"relative_extrusion": { "value": true, "enabled": true },
