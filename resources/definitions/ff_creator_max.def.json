@@ -57,7 +57,7 @@
         "skirt_gap": { "default_value": 10 },
         "raft_margin": { "default_value": 3 },
         "machine_use_extruder_offset_to_offset_coords": { "default_value": false },
-        "machine_start_gcode": {"value": "; *** Flash Forge Creator Max Start gCode\r\n; Where possible the command is followed by an explanation\r\nM118 X52.91 Y45.43 Z4.70 T0; not clear, spec says this is supposed to be used to output to the display.\r\nG90 ; set absolute positionsing\r\nG28 ; Move to origin\r\nM132 X Y Z A B ; recall home offsets\r\nG1 Z50.000 F420 ; Move Z to 50\r\nG161 X Y F3300 ; move x and y to home\r\nM651 ; Turn chassis fan on (which I don't think the printer has)" },
+        "machine_start_gcode": {"default_value": "; *** Flash Forge Creator Max Start gCode\r\n; Where possible the command is followed by an explanation\r\nM118 X52.91 Y45.43 Z4.70 T0; not clear, spec says this is supposed to be used to output to the display.\r\nG90 ; set absolute positionsing\r\nG28 ; Move to origin\r\nM132 X Y Z A B ; recall home offsets\r\nG1 Z50.000 F420 ; Move Z to 50\r\nG161 X Y F3300 ; move x and y to home\r\nM651 ; Turn chassis fan on (which I don't think the printer has)" },
         "machine_end_gcode": {"default_value": "; *** Flash Forge Creator Max End gCode\r\n; Where possible the command is followed by an explanation\r\nM140 S0 ; Bed Temp off\r\nG162 Z F1800 ; Bed to bottom\r\nG28 X Y ; Move to Origin\r\nM132 X Y A B ; recall home offsets\r\nM652 ; Chassis fan off???\r\nG91 ; Set Relative Positioning\r\nM18 ; Disable all stepper motors\r\nM82 ;absolute extrusion mode"}      
 	}
 
