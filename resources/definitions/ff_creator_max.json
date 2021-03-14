@@ -56,7 +56,8 @@
         "skirt_gap": { "default_value": 10 },
         "raft_margin": { "default_value": 3 },
         "machine_use_extruder_offset_to_offset_coords": { "default_value": false },
-        "machine_start_gcode": {"value": "dual_gcode if len(extruderValues('extruder_nr')) > 1 else single_gcode" },
-        "machine_end_gcode": {"default_value": "; **** FlashForge Creator Max end.gcode ****\nM73 P100 ; end build progress\nG1 Z150 F1000 ; send Z axis to bottom of machine\nM140 S0 T0 ; cool down HBP\nM104 S0 T0 ; cool down right extruder\nM104 S0 T1 ; cool down left extruder\nM127 ; stop blower fan\nG162 X Y F3000 ; home XY maximum\nM18 ; disable stepper\nM70 P3 ; We <3 Making Things!\nM72 P1 ; play Ta-Da song\n; **** end of end.gcode ****"}      
+        "machine_start_gcode": {"value": "; *** Flash Forge Creator Max Start gCode\r\n; Where possible the command is followed by an explanation\r\nM118 X52.91 Y45.43 Z4.70 T0; not clear, spec says this is supposed to be used to output to the display.\r\nG90 ; set absolute positionsing\r\nG28 ; Move to origin\r\nM132 X Y Z A B ; recall home offsets\r\nG1 Z50.000 F420 ; Move Z to 50\r\nG161 X Y F3300 ; move x and y to home\r\nM651 ; Turn chassis fan on (which I don't think the printer has)"e" },
+        "machine_end_gcode": {"default_value": "; *** Flash Forge Creator Max End gCode\r\n; Where possible the command is followed by an explanation\r\nM140 S0 ; Bed Temp off\r\nG162 Z F1800 ; Bed to bottom\r\nG28 X Y ; Move to Origin\r\nM132 X Y A B ; recall home offsets\r\nM652 ; Chassis fan off???\r\nG91 ; Set Relative Positioning\r\nM18 ; Disable all stepper motors\r\nM82 ;absolute extrusion mode"}      
 	}
+
 }
