@@ -17,6 +17,27 @@
 			"1" : "FFCM_2nd"
 		}
 	},
+        "settings": {
+                "single_gcode": {
+                    "label": "GCode for single extrusion",
+                    "description": "Start GCode to run when doing single extrusion",
+                    "type": "str",
+                    "settable_per_mesh": false,
+                    "settable_per_extruder": false,
+                    "settable_per_meshgroup": false,
+                    "default_value": "; *** Flash Forge Creator Max Start gCode v1.1\n; Where possible the command is followed by an explanation\nM118 X52.91 Y45.43 Z4.70 T{initial_extruder_nr}; not clear, spec says this is supposed to be used to output to the display.\nM140 S{material_bed_temperature, initial_extruder_nr} T0; set bed temperature\nM104 S{material_print_temperature_layer_0, initial_extruder_nr} T{initial_extruder_nr} ; set left or right extruder temperature\nM133 T{initial_extruder_nr} ; stabilize left or right extruder temperature\nG90 ; set absolute positionsing\nG28 ; Move to origin\nM132 X Y Z A B ; recall home offsets\nG1 Z50.000 F420 ; Move Z to 50\nG161 X Y F3300 ; move x and y to home\nM651 ; Turn chassis fan on (which I don't think the printer has)\nG92 E0; Set Position\nM7 T0; Wait for bed to finish heating\n;****** End Creator Max start gCode" 
+                },
+                "dual_gcode": {
+                        "label" : "Gcode for dual extruders",
+                        "description" : "Start Gcode for prints when doing double extrusion",
+                        "type" : "str",
+                        "settable_per_mesh" : false,
+                        "settable_per_extruder" : false,
+                        "settable_per_meshgroup" : false,
+                        "default_value" : ";***Not yet created"
+                }
+
+        },
 	"overrides" : {
 		"machine_name" : { "default_value" : "Flashforge Creator Max"},
 		"machine_gcode_flavor" : { "default_value" : "RepRap (Marlin/Sprinter)" },
@@ -27,25 +48,9 @@
 		"machine_height" : { "default_value" : 150 },
 		"machine_depth" : { "default_value" : 148 },
 		"machine_center_is_zero" : { "default_value" : true },
-		"relative_extrusion": { "value": true, "enabled": true },
-                "machine_max_feedrate_x": { "default_value": 300 },
-                "machine_max_feedrate_y": { "default_value": 300 },
-                "machine_max_feedrate_z": { "default_value": 20 },
-                "machine_max_feedrate_e": { "default_value": 30 },
-                "machine_max_acceleration_x": { "default_value": 1000 },
-                "machine_max_acceleration_y": { "default_value": 1000 },
-                "machine_max_acceleration_z": { "default_value": 150 },
-                "machine_max_acceleration_e": { "default_value": 2000 },
-                "machine_max_jerk_xy": { "default_value": 15 },
-                "machine_max_jerk_z": { "default_value": 10 },
-                "machine_max_jerk_e": { "default_value": 20 },
                 "machine_endstop_positive_direction_x": { "default_value": true },
                 "machine_endstop_positive_direction_y": { "default_value": true },
                 "machine_endstop_positive_direction_z": { "default_value": false },
-                "machine_steps_per_mm_x": { "default_value": 94.117647 },
-                "machine_steps_per_mm_y": { "default_value": 94.117647 },
-                "machine_steps_per_mm_z": { "default_value": 400 },
-                "machine_steps_per_mm_e": { "default_value": 96.275201870333662468889989185642 },
                 "retraction_amount": {"default_value": 1.3 },
                 "retraction_speed": { "default_value": 30 },
                 "speed_layer_0":{ "value": 15.0 },
@@ -57,8 +62,8 @@
                 "skirt_gap": { "default_value": 10 },
                 "raft_margin": { "default_value": 3 },
                 "machine_use_extruder_offset_to_offset_coords": { "default_value": false },
-                "machine_start_gcode": {"default_value": "; *** Flash Forge Creator Max Start gCode v1.1\r\n; Where possible the command is followed by an explanation\r\nM118 X52.91 Y45.43 Z4.70 T0; not clear, spec says this is supposed to be used to output to the display.\r\nG90 ; set absolute positionsing\r\nG28 ; Move to origin\r\nM132 X Y Z A B ; recall home offsets\r\nG1 Z50.000 F420 ; Move Z to 50\r\nG161 X Y F3300 ; move x and y to home\r\nM651 ; Turn chassis fan on (which I don't think the printer has)\nG92 E0; Set Position\nM7 T0; Wait for bed to finish heating\n;****** End Creator Max start gCode" },
-                "machine_end_gcode": {"default_value": "; *** Flash Forge Creator Max End gCode\r\n; Where possible the command is followed by an explanation\r\nM140 S0 ; Bed Temp off\r\nG162 Z F1800 ; Bed to bottom\r\nG28 X Y ; Move to Origin\r\nM132 X Y A B ; recall home offsets\r\nM652 ; Chassis fan off???\r\nG91 ; Set Relative Positioning\r\nM18 ; Disable all stepper motors\r\nM82 ;absolute extrusion mode"}      
+                "machine_start_gcode": {"value": "dual_gcode if len(extruderValues('extruder_nr')) > 1 else single_gcode" },
+                "machine_end_gcode": {"default_value": "; *** Flash Forge Creator Max End gCode\n; Where possible the command is followed by an explanation\nM140 S0 ; Bed Temp off\nG162 Z F1800 ; Bed to bottom\nG28 X Y ; Move to Origin\nM132 X Y A B ; recall home offsets\nM652 ; Chassis fan off???\nG91 ; Set Relative Positioning\nM18 ; Disable all stepper motors\nM82 ;absolute extrusion mode"}      
 	}
 
 }
