@@ -13,8 +13,8 @@
                 "nozzle_offsetting_for_disallowed_areas": false,
 		"machine_extruder_trains":
 		{
-			"0" : "FFCM_Left",
-			"1" : "FFCM_Right"
+			"1" : "FFCM_Left",
+			"0" : "FFCM_Right"
 		}
 	},
         "settings": {
