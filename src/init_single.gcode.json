@@ -1,0 +1,14 @@
+; *** Flash Forge Creator Max Start gCode v1.1
+; Where possible the command is followed by an explanation
+M118 X52.91 Y45.43 Z4.70 T{initial_extruder_nr}; not clear, spec says this is supposed to be used to output to the display.
+M140 S{material_bed_temperature, initial_extruder_nr} T0; set bed temperature
+M104 S{material_print_temperature_layer_0, initial_extruder_nr} T{initial_extruder_nr} ; set left or right extruder temperature
+G90 ; set absolute positionsing
+G28 ; Move to origin
+M132 X Y Z A B ; recall home offsets
+G1 Z50.000 F420 ; Move Z to 50
+G161 X Y F3300 ; move x and y to home
+M7 T0 ; Wait for bed to complete heating (FF custom code?)
+M6 T{initial_extruder_nr} ; Wit for nozzle to complete heating (FF Custom code?)
+M651 ; Turn chassis fan on (which I don't think the printer has)
+;****** End Creator Max start gCode

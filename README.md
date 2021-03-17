@@ -6,7 +6,15 @@ This repository is intended to allow collaboration on the creation of a [Cura](h
 This repository was inspired by the [Flash forge for cura](https://github.com/eugr/Flashforge-for-Cura) project and borrows their install script and their STL file for the print bed
 
 ## Current Status
-This profile is working on both extruders. Due to the fact the the left extruder is T1 and the right extruder is T0 the extruders don't appear in the correct order in the UI. The biggest issue right now is that the Tool change codes (`T0` or `T1`) that cura puts in the file for multi tool printers causes an error on file read.
+
+### Single extruder
+
+Not fully working. You can print with either extruder however the left extruder offset is not being picked up correctly so the print is shifted 34 mm to the right of center.
+
+Due to the fact the the left extruder is T1 and the right extruder is T0 the extruders don't appear in the correct order in the UI. The biggest issue right now is that the Tool change codes (`T0` or `T1`) that cura puts in the file for multi tool printers causes an error on file read.
+
+### Dual Extruder
+Not yet started
 
 ### Removing Tool errors
 To remove the tool error, use Cura's Post Processing. Go to "Extensions -> Post Processing -> Modify G-Code". In the window pick the script "Search and Replace". The search value is `(\nT0\n)|(\nT1\n)`, the replace value is `\n` and check the "Use Regular Expression" box.
